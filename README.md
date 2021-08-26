@@ -1,6 +1,7 @@
 # 食品管理アプリ
 
 ## Docker起動方法
+
 1. ディレクトリを移動する
 ```
 cd expriy_management
@@ -16,8 +17,6 @@ docker-compose build --no-cache
 ```
 docker-compose up -d
 ```
-
-3.  <http://localhost:5000> を確認
 
 ## DB接続方法
 ```
