@@ -1,0 +1,2 @@
+CREATE DATABASE expiery_management;
+use expiery_management;

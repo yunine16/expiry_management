@@ -2,21 +2,22 @@ version: '3'
 
 services:
   api:
-    build: .
+    build: ./app/
     ports:
       - "5000:5000"
     volumes:
-      - "./src:/src"
+      - "./app/src/:/app/src"
     tty: true
     environment:
       TZ: Asia/Tokyo
-      FLASK_APP: run.py
+      FLASK_APP: app.py
       FLASK_ENV: development
     command: flask run -h 0.0.0.0
+
   db:
-    build: ./mysql/
-    volumes:
-      - ./mysql/mysql_data:/var/lib/mysql
-      - ./mysql/sqls:/docker-entrypoint-initdb.d
+    build: ./db/
+    volumes: 
+      - ./db/:/docker-entrypoint-initdb.d
+      - ./db/logs:/var/logs/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=hoge
+      - MYSQL_ROOT_PASSWORD=root
