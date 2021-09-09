@@ -1,2 +1,2 @@
-CREATE DATABASE expiery_management;
-use expiery_management;
+CREATE DATABASE expiry_management;
+use expiry_management;
