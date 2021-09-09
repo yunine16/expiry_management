@@ -107,3 +107,6 @@ venv.bak/
 
 # MySQL
 mysql/logs
+
+# migration
+migrations/

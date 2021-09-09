@@ -7,6 +7,7 @@ class User(db.Model):
     __tablename__ = 'Users'
 
     id = db.Column(db.Integer, primary_key=True)
-    # ここと
+    name = db.Column(db.String(255))
+    mailAddress = db.Column(db.String(255))
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.now)
-    # ここにかいてね
+    updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now)
