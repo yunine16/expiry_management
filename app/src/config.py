@@ -8,7 +8,6 @@ class DevelopmentConfig:
             'host': os.getenv('DB_HOST', 'db')
     })
 
-    print(os.getenv('DB_ROOT_PASSWORD'))
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = False
 
