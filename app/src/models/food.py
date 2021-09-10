@@ -10,7 +10,7 @@ class Food(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
     expiry_date = db.Column(db.Date, nullable=False)
-    user_id = db.Column(db.String(255), nullable=False)
+    user_id = db.Column(db.String(255), db.ForeignKey("users.id"), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.now)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now)
 
