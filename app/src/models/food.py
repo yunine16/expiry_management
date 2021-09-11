@@ -5,7 +5,7 @@ from database import db
 class Food(db.Model):
     __tablename__ = 'Foods'
 
-    id = db.Column(db.Integer, primary_key=True autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(255), nullable=False)
     expiry_date = db.Column(db.Date, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("Users.id"))
