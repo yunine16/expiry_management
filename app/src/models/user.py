@@ -1,7 +1,5 @@
 from datetime import datetime
-from sqlalchemy_utils import UUIDType
 from database import db
-import uuid
 
 class User(db.Model):
     __tablename__ = 'Users'
@@ -10,6 +8,7 @@ class User(db.Model):
     mailAddress = db.Column(db.String(255), nullable=False, primary_key=True)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.now)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now)
+    foods = db.relationship('Food', backref='owner')
 
     def __init__(self, mailAddress=None):
         self.mailAddress = mailAddress
