@@ -7,7 +7,6 @@ class DemoSeeder(Seeder):
 
     # run() will be called by Flask-Seeder
     def run(self):
-
         jack_users = [
             User(mailAddress="mochi@jack.com"),
             User(mailAddress="mono@jack.com"),
@@ -18,7 +17,7 @@ class DemoSeeder(Seeder):
         
         for jack_user in jack_users:
             print("Adding user: %s" % jack_user)
-            self.db.session.add(jack_user)
+            self.db.session.add(jack_user) 
 
         sample_foods = [
             Food(name="大根", expiry_date="2021-10-10", user_id=1),

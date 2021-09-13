@@ -5,7 +5,7 @@ from models import User, Food
 
 # 全ての食品に関するクラス
 # /foods
-class FoodList(Resource):
+class FoodListApi(Resource):
     def get(self):
         return
 
@@ -14,7 +14,7 @@ class FoodList(Resource):
 
 # ある食品に関するクラス
 # /foods/<id>
-class Food(Resource):
+class FoodApi(Resource):
     def get(self):
         return
 
@@ -26,6 +26,7 @@ class Food(Resource):
 
 # あるuserの所有する食品一覧に関するクラス
 # /foods/user/<user_id>
-class UsersFoodList(Resource):
-    def get(self):
-        return
+class UsersFoodListApi(Resource):
+    def get(self, user_id):
+        user = db.session.query(Food).filter_by(user_id=user_id).all()
+        return 

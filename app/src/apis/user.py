@@ -5,7 +5,7 @@ from models import User, food
 
 # 全てのuserに関するクラス
 # /users
-class User(Resource):
+class UserApi(Resource):
     def get(self):
         return
 
