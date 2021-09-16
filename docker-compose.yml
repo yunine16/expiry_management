@@ -17,8 +17,12 @@ services:
   db:
     build: ./db/
     hostname: db
-    volumes: 
+    volumes:
       - ./db/:/docker-entrypoint-initdb.d
       - ./db/logs:/var/logs/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASS}
+
