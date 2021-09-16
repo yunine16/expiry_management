@@ -21,7 +21,9 @@ class FoodApi(Resource):
     def put(self):
         return
 
-    def delete(self):
+    def delete(self, mailAdress, name, expiry_date):
+        id=db.session.query(Users).filter(Users.mailAdress==mailAdress)
+        db.session.query(Foods).filter(Foods.name=name, Foods.user_id=id, Foods.expiry_date=expiry_date).delete()
         return
 
 # あるuserの所有する食品一覧に関するクラス
