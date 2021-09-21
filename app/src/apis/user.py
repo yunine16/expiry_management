@@ -9,7 +9,12 @@ class UserApi(Resource):
     def get(self):
         return
 
-    def post(self):
+    def post(self, user_name, mailAddress, ):
+        import time
+        date=datetime.date.today()
+        user_a=Users(name=user_name, mailAddress=mailAddress, created_at=date, updated_at=date, )
+        db.session.add(user_a)
+        db.session.flush()
         return
 
     def delete(self):
