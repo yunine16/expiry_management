@@ -21,9 +21,8 @@ class FoodApi(Resource):
     def put(self):
         return
 
-    def delete(self, mailAddress, name, expiry_date):
-        id=db.session.query(Users).filter(Users.mailAddress==mailAddress)
-        db.session.query(Foods).filter(Foods.name=name, Foods.user_id=id, Foods.expiry_date=expiry_date).delete()
+    def delete(self, id):
+        db.session.query(Food).filter(Food.id==id).delete()
         db.session.commit()
         return
 
