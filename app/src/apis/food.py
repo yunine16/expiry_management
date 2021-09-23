@@ -25,7 +25,9 @@ class FoodApi(Resource):
     def put(self):
         return
 
-    def delete(self):
+    def delete(self, id):
+        db.session.query(Food).filter(Food.id==id).delete()
+        db.session.commit()
         return
 
 # あるuserの所有する食品一覧に関するクラス
