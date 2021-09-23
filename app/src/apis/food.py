@@ -26,7 +26,7 @@ class FoodApi(Resource):
         return
 
     def delete(self, id):
-        db.session.query(Food).filter(Food.id==id).delete()
+        db.session.query(Food).filter(Food.id == id).delete()
         db.session.commit()
         return
 
@@ -36,15 +36,16 @@ class FoodApi(Resource):
 
 class UsersFoodListApi(Resource):
     def get(self, user_id):
-        foods = db.session.query(Food).filter_by(user_id=user_id).all()
         user = db.session.query(User).filter_by(id=user_id).first()
         if not user:
             abort(404, {'code': 'Not found', 'message': 'user not found'})
+
+        foods = db.session.query(Food).filter_by(user_id=user_id).all()
         return jsonify({
-            "UsersFoodList": [
-                {"id": food.id,
-                 "name": food.name,
-                 "expiry_date": food.expiry_date,
-                 "user_id": food.user_id
-                 } for food in foods]
+            "UsersFoodList": [{
+                "id": food.id,
+                "name": food.name,
+                "expiry_date": food.expiry_date,
+                "user_id": food.user_id
+            } for food in foods]
         })
