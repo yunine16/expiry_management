@@ -18,6 +18,21 @@ docker-compose build --no-cache
 docker-compose up -d
 ```
 
+## 仮データの生成
+```
+docekr-compose exec api bash
+```
+でflaskのコンテナに入ったあと
+```
+flask db migrate
+flask db upgrade
+flask seed run
+```
+flaskのコンテナから抜ける
+```
+exit
+```
+
 ## DB接続方法
 ```
 docker-compose exec db mysql -u root -p
