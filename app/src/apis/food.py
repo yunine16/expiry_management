@@ -1,6 +1,7 @@
 # Foodsテーブルに関するスクリプトはここ
 from flask_restful import Resource, reqparse, abort
-from flask import jsonify, abort
+from flask import jsonify, abort, request
+import json
 from database import db
 from models import User, Food
 
@@ -12,12 +13,24 @@ class FoodListApi(Resource):
         return
 
     def post(self):
-        return
+        posted_data = request.get_json(force=True)
+        mailAddress = posted_data["mailAddress"]
+        user = db.session.query(User).filter_by(
+            mailAddress=mailAddress).first()
+
+        if not user:
+            abort(404, {'code': 'Not found', 'message': 'user not found'})
+
+        name = posted_data["name"]
+        expiry_date = posted_data["expiry_date"]
+        new_food = Food(name=name, expiry_date=expiry_date, user_id=user.id)
+        db.session.add(new_food)
+        db.session.commit()
+        return "Adding food: %s" % new_food
+
 
 # ある食品に関するクラス
 # /foods/<id>
-
-
 class FoodApi(Resource):
     def get(self):
         return
