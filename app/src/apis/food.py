@@ -5,10 +5,9 @@ import json
 from database import db
 from models import User, Food
 
+
 # 全ての食品に関するクラス
 # /foods
-
-
 class FoodListApi(Resource):
     def get(self):
         return
@@ -29,10 +28,9 @@ class FoodListApi(Resource):
         db.session.commit()
         return "Adding food: %s" % new_food
 
+
 # ある食品に関するクラス
 # /foods/<id>
-
-
 class FoodApi(Resource):
     def get(self):
         return
