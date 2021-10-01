@@ -22,7 +22,11 @@ class FoodApi(Resource):
     def get(self):
         return
 
-    def put(self):
+    def put(self, name, new_expiry_date, user_id):
+        import time
+        date=datetime.date.today()
+        food_a=session.query(Foods).filter(Foods.name==name, Foods.user_id==user_id).first()
+        food_a.expiry_date=new_expiry_date
         return
 
     def delete(self, id):
